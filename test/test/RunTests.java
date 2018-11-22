@@ -10,11 +10,10 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-import task1.CommercialistTest;
+import task1.EmployeeTest;
 import task1.FactoryWorkerTest;
 import task1.finances.AccountingInterfaceTest;
 import task1.finances.AccountingTest;
-import task1.EmployeeTest;
 import task2.ATMInterfaceTest;
 import task2.ATMTest;
 
@@ -27,7 +26,7 @@ public class RunTests {
 	public static void main(String[] args) {
 		runTestsForClass(EmployeeTest.class);
 		runTestsForClass(FactoryWorkerTest.class);
-		runTestsForClass(CommercialistTest.class);
+		
 		runTestsForClass(AccountingInterfaceTest.class);
 		runTestsForClass(AccountingTest.class);
 
