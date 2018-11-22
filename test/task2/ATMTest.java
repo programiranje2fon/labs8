@@ -47,6 +47,13 @@ public class ATMTest {
 	}
 	
 	@Test
+	public void atribut_stanje_pocetnaVrednost() {
+		double stanjeValue = (double) TestUtil.getFieldValue(instance, "balance");
+		
+		assertEquals("Atribut balance nema pocetnu vrednost 5000", 5000, stanjeValue, 0.001);
+	}
+	
+	@Test
 	public void atribut_stanje_vidljivost() {
 		assertTrue("Atribut balance nije privatan", TestUtil.hasFieldModifier(ATM.class, "balance", Modifier.PRIVATE));
 	}
@@ -68,11 +75,11 @@ public class ATMTest {
 	
 	@Test
 	public void metoda_podigniNovac() {
-		double stanjeValue1 = (double) TestUtil.getFieldValue(instance, "balance");
+		double stanjePre = (double) TestUtil.getFieldValue(instance, "balance");
 		
 		instance.withdrawMoney(100);
-		double stanjeValue2 = (double) TestUtil.getFieldValue(instance, "balance");
-		assertEquals("Nakon poziva metode withdrawMoney(double) sa prosledjenim argumentom \"100\", vrednost atributa balance se nije smanjila za tu vrednost", 100, stanjeValue1 - stanjeValue2, 0.001);
+		double stanjePosle = (double) TestUtil.getFieldValue(instance, "balance");
+		assertEquals("Nakon poziva metode withdrawMoney(double) sa prosledjenim argumentom \"100\", vrednost atributa balance se nije smanjila za tu vrednost", 100, stanjePre - stanjePosle, 0.001);
 	}
 	
 	@Test
