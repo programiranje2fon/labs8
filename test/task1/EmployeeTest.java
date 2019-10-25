@@ -31,31 +31,31 @@ public class EmployeeTest {
 	}
 	
 	@Test
-	public void atribut_slobodno() {
-		assertTrue("U klasi nije definisan atribut hourlyRate", TestUtil.doesFieldExist(Employee.class, "hourlyRate"));
+	public void attribute_hourlyRate() {
+		assertTrue("There is no attribute \"hourlyRate\" declared", TestUtil.doesFieldExist(Employee.class, "hourlyRate"));
 	}
 	
 	@Test
-	public void atribut_slobodno_vidljivost() {
-		assertTrue("Atribut hourlyRate nije zasticen (protected)", TestUtil.hasFieldModifier(Employee.class, "hourlyRate", Modifier.PROTECTED));
+	public void attribute_hourlyRate_visibility() {
+		assertTrue("The attribute \"hourlyRate\" is not protected", TestUtil.hasFieldModifier(Employee.class, "hourlyRate", Modifier.PROTECTED));
 	}
 	
 	@Test
-	public void metoda_setSatnica() {
+	public void method_setHourlyRate() {
 		instance.setHourlyRate(10);
 		double satnicaValue = (double) TestUtil.getFieldValue(instance, "hourlyRate");
-		assertEquals("Nakon poziva metode setHourlyRate(double) sa prosledjenim argumentom \"10\", vrednost atributa hourlyRate nema tu vrednost", 10, satnicaValue, 0.001);
+		assertEquals("After passing as argument \"10\", the attribute \"hourlyRate\" should have this value", 10, satnicaValue, 0.001);
 	}
 	
 	@Test
-	public void metoda_getSatnica() {
+	public void method_getHourlyRate() {
 		double satnicaValue = (double) TestUtil.getFieldValue(instance, "hourlyRate");
 
-		assertEquals("Metoda getHourlyRate() ne vraca vrednost atributa hourlyRate", satnicaValue, instance.getHourlyRate(), 0.001);
+		assertEquals("The method does not return the value of the attribute \"hourlyRate\"", satnicaValue, instance.getHourlyRate(), 0.001);
 	}
 	
 	@Test
-	public void metoda_izracunajPlatu() {
-		assertTrue("U klasi nije definisana metoda computeSalary(int)", TestUtil.doesMethodExist(Employee.class, "computeSalary", new Class<?>[]{int.class}));
+	public void method_computeSalary() {
+		assertTrue("There is no method computeSalary(int) defined", TestUtil.doesMethodExist(Employee.class, "computeSalary", new Class<?>[]{int.class}));
 	}
 }

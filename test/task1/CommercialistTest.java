@@ -23,12 +23,12 @@ public class CommercialistTest {
 	
 	@Test
 	public void klasa_nasledjivanje() {
-		assertTrue("Klasa Commercialist ne nasledjuje klasu Employee", Employee.class.isInstance(instance));
+		assertTrue("The Commercialist class should extend the class Employee", Employee.class.isInstance(instance));
 	}
 	
 	@Test
 	public void metoda_izracunajPlatu() {
 		instance.setHourlyRate(100);
-		assertEquals("Za satnicu od 100 dinara i broj sati 10, metoda computeSalary(int) ne vraca vrednost 51000", 51000, instance.computeSalary(10), 0.001);
+		assertEquals("When hourlyRate=100 and the argument passed is 10, the method should return 51000", 51000, instance.computeSalary(10), 0.001);
 	}
 }

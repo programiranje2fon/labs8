@@ -40,36 +40,36 @@ public class AccountingTest {
 	}
 
 	@Test
-	public void klasa_implementacijaInterfejsa() {
-		assertTrue("Klasa AccountingDepartment ne implementira interfejs AccountingInterface", AccountingInterface.class.isInstance(instance));
+	public void class_implementInterface() {
+		assertTrue("The class AccountingDepartment does not implement the interface AccountingInterface", AccountingInterface.class.isInstance(instance));
 	}
 
 	@Test
-	public void atribut_stanje() {
-		assertTrue("U klasi nije definisan atribut balance", TestUtil.doesFieldExist(AccountingDepartment.class, "balance"));
+	public void attribute_balance() {
+		assertTrue("There is no attribute \"balance\" declared", TestUtil.doesFieldExist(AccountingDepartment.class, "balance"));
 	}
 	
 	@Test
-	public void atribut_stanje_vidljivost() {
-		assertTrue("Atribut balance nije privatan", TestUtil.hasFieldModifier(AccountingDepartment.class, "balance", Modifier.PRIVATE));
+	public void attribute_balance_visibility() {
+		assertTrue("Attribute \"balance\" is not private", TestUtil.hasFieldModifier(AccountingDepartment.class, "balance", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void metoda_setStanje() {
+	public void method_setBalance() {
 		instance.setBalance(100);
 		double stanjeValue = (double) TestUtil.getFieldValue(instance, "balance");
-		assertEquals("Nakon poziva metode setBalance(double) sa prosledjenim argumentom \"100\", vrednost atributa balance nema tu vrednost", 100, stanjeValue, 0.001);
+		assertEquals("After passing as argument \"100\", the attribute \"balance\" should have this value", 100, stanjeValue, 0.001);
 	}
 	
 	@Test
-	public void metoda_getStanje() {
+	public void method_getBalance() {
 		double stanjeValue = (double) TestUtil.getFieldValue(instance, "balance");
 
-		assertEquals("Metoda getBalance() ne vraca vrednost atributa balance", stanjeValue, instance.getBalance(), 0.001);
+		assertEquals("The method does not return the value of the attribute \"balance\"", stanjeValue, instance.getBalance(), 0.001);
 	}
 	
 	@Test
-	public void metoda_isplatiPlate() {
+	public void method_paySalaries() {
 		FactoryWorker pr1 = new FactoryWorker();
 		pr1.setHourlyRate(100);
 		
@@ -82,11 +82,11 @@ public class AccountingTest {
 		instance.setBalance(200000);
 		instance.paySalaries(new Employee[]{pr1, pr2, k1}, 160);
 		
-		assertEquals("Za prosledjene niz sa tri zaposlena (FactoryWorker satnica 100 din., FactoryWorker satnica 150 din. i Commercialist satnica 200 din.) i broj radnik sati 160, metoda isplatiPlate() u momentu kada je stanje 100000 dinara, nije umanjilo stanje na 78000.0 dinara.", 78000, instance.getBalance(), 0.001);
+		assertEquals("When an array with three instances is passed (FactoryWorker hourlyRate=100, FactoryWorker hourlyRate=150, and Commercialist hourlyRate=200) and workingHours=160, when the balance=100000, the method paySalaries() should reduce the balance value to 78000.", 78000, instance.getBalance(), 0.001);
 	}
 	
 	@Test
-	public void metoda_isplatiPlate_nemaNovca() {
+	public void method_paySalaries_noMoney() {
 		FactoryWorker pr1 = new FactoryWorker();
 		pr1.setHourlyRate(100);
 		
@@ -99,7 +99,7 @@ public class AccountingTest {
 		instance.setBalance(1000);
 		instance.paySalaries(new Employee[]{pr1, pr2, k1}, 160);
 		
-		assertTrue("Za prosledjene niz sa tri zaposlena (FactoryWorker satnica 100 din., FactoryWorker satnica 150 din. i Commercialist satnica 200 din.) i broj radnik sati 160, metoda isplatiPlate() u momentu kada je stanje 1000 dinara, nije ispisan tekst 'NEMA DOVOLJNO NOVCA'", outContent.toString().trim().equalsIgnoreCase("NOT ENOUGH MONEY FOR SALARIES"));
+		assertTrue("When an array with three instances is passed (FactoryWorker hourlyRate=100, FactoryWorker hourlyRate=150, and Commercialist hourlyRate=200) and workingHours=160, when the balance=100000, the method paySalaries() should print to the console NOT ENOUGH MONEY FOR SALARIES", outContent.toString().trim().equalsIgnoreCase("NOT ENOUGH MONEY FOR SALARIES"));
 	}
 
 }

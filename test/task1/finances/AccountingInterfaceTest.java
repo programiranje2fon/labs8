@@ -10,8 +10,8 @@ import test.TestUtil;
 public class AccountingInterfaceTest {
 
 	@Test
-	public void metoda_isplatiPlate() {
-		assertTrue("U klasi nije definisana metoda paySalaries(Employee[], int)", TestUtil.doesMethodExist(AccountingInterface.class, "paySalaries", new Class<?>[]{Employee[].class, int.class}));
+	public void method_paySalaries() {
+		assertTrue("There is no method paySalaries(Employee[], int) declared", TestUtil.doesMethodExist(AccountingInterface.class, "paySalaries", new Class<?>[]{Employee[].class, int.class}));
 	}
 	
 }

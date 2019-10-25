@@ -22,13 +22,13 @@ public class FactoryWorkerTest {
 	}
 	
 	@Test
-	public void klasa_nasledjivanje() {
-		assertTrue("Klasa FactoryWorker ne nasledjuje klasu Employee", Employee.class.isInstance(instance));
+	public void class_nasledjivanje() {
+		assertTrue("The class FactoryWorker does not extend the class Employee", Employee.class.isInstance(instance));
 	}
 	
 	@Test
-	public void metoda_izracunajPlatu() {
+	public void method_computeSalary() {
 		instance.setHourlyRate(100);
-		assertEquals("Za satnicu od 100 dinara i broj sati 10, metoda computeSalary(int) ne vraca vrednost 1000", 1000, instance.computeSalary(10), 0.001);
+		assertEquals("When hourlyRate=100 and the argument passed is 10, the method should return 1000", 1000, instance.computeSalary(10), 0.001);
 	}
 }

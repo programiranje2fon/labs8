@@ -37,60 +37,60 @@ public class ATMTest {
 	}
 	
 	@Test
-	public void klasa_implementacijaInterfejsa() {
-		assertTrue("Klasa ATM ne implementira interfejs ATMInterface", ATMInterface.class.isInstance(instance));
+	public void class_implement_interfaces() {
+		assertTrue("The class ATM does not implement the interface ATMInterface", ATMInterface.class.isInstance(instance));
 	}
 
 	@Test
-	public void atribut_stanje() {
-		assertTrue("U klasi nije definisan atribut balance", TestUtil.doesFieldExist(ATM.class, "balance"));
+	public void attribute_balance() {
+		assertTrue("There is no attribute \"balance\" declared", TestUtil.doesFieldExist(ATM.class, "balance"));
 	}
 	
 	@Test
-	public void atribut_stanje_pocetnaVrednost() {
+	public void attribute_balance_defaultValue() {
 		double stanjeValue = (double) TestUtil.getFieldValue(instance, "balance");
 		
-		assertEquals("Atribut balance nema pocetnu vrednost 5000", 5000, stanjeValue, 0.001);
+		assertEquals("The attribute \"balance\" doe not have the default value of 5000", 5000, stanjeValue, 0.001);
 	}
 	
 	@Test
-	public void atribut_stanje_vidljivost() {
-		assertTrue("Atribut balance nije privatan", TestUtil.hasFieldModifier(ATM.class, "balance", Modifier.PRIVATE));
+	public void attribute_balance_visibility() {
+		assertTrue("The attribute \"balance\" is not private", TestUtil.hasFieldModifier(ATM.class, "balance", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void metoda_uloziNovac() {
+	public void method_depositMoney() {
 		double stanjeValue1 = (double) TestUtil.getFieldValue(instance, "balance");
 		
 		instance.depositMoney(100);
 		double stanjeValue2 = (double) TestUtil.getFieldValue(instance, "balance");
-		assertEquals("Nakon poziva metode depositMoney(double) sa prosledjenim argumentom \"100\", vrednost atributa balance se nije uvecalo za tu vrednost", 100, stanjeValue2 - stanjeValue1, 0.001);
+		assertEquals("After passing as argument \"100\", the attribute \"balance\" should have this value", 100, stanjeValue2 - stanjeValue1, 0.001);
 	}
 	
 	@Test
-	public void metoda_uloziNovac_manjeOd0() {
+	public void method_depositMoney_lessThan0() {
 		instance.depositMoney(-100);
-		assertTrue("Nakon poziva metode depositMoney(double) sa prosledjenim argumentom \"-100\", metoda nije ispisala tekst 'ERROR'", outContent.toString().trim().equalsIgnoreCase("ERROR"));
+		assertTrue("After passing as argument \"-100\", the method should print 'ERROR' to the output", outContent.toString().trim().equalsIgnoreCase("ERROR"));
 	}
 	
 	@Test
-	public void metoda_podigniNovac() {
+	public void method_withdrawMoney() {
 		double stanjePre = (double) TestUtil.getFieldValue(instance, "balance");
 		
 		instance.withdrawMoney(100);
 		double stanjePosle = (double) TestUtil.getFieldValue(instance, "balance");
-		assertEquals("Nakon poziva metode withdrawMoney(double) sa prosledjenim argumentom \"100\", vrednost atributa balance se nije smanjila za tu vrednost", 100, stanjePre - stanjePosle, 0.001);
+		assertEquals("After passing as argument \"100\", the value of the attribute \"balance\" did not decrease for 100", 100, stanjePre - stanjePosle, 0.001);
 	}
 	
 	@Test
-	public void metoda_podigniNovac_manjeOd0() {
+	public void method_withdrawMoney_lessThen0() {
 		instance.withdrawMoney(-100);
-		assertTrue("Nakon poziva metode withdrawMoney(double) sa prosledjenim argumentom \"-100\", metoda nije ispisala tekst 'ERROR'", outContent.toString().trim().equalsIgnoreCase("ERROR"));
+		assertTrue("After passing as argument \"-100\", the method should print 'ERROR' to the output", outContent.toString().trim().equalsIgnoreCase("ERROR"));
 	}
 	
 	@Test
-	public void metoda_podigniNovac_nemaDovoljnoNovca() {
+	public void method_withdrawMoney_notEnoughMoney() {
 		instance.withdrawMoney(100000);
-		assertTrue("Nakon poziva metode withdrawMoney(double) sa prosledjenim argumentom \"100000\", metoda nije ispisala tekst 'NOT ENOUGH MONEY FOR WITHDRAWL'", outContent.toString().trim().equalsIgnoreCase("NOT ENOUGH MONEY FOR WITHDRAWL"));
+		assertTrue("After passing as argument \"100000\", and there is not that much money on the ballance, the method should print 'NOT ENOUGH MONEY FOR WITHDRAWL' to the output", outContent.toString().trim().equalsIgnoreCase("NOT ENOUGH MONEY FOR WITHDRAWL"));
 	}
 }
