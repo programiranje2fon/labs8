@@ -70,7 +70,7 @@ public class ATMTest {
 	@Test
 	public void method_depositMoney_lessThan0() {
 		instance.depositMoney(-100);
-		assertTrue("After passing as argument \"-100\", the method should print 'ERROR' to the output", outContent.toString().trim().equalsIgnoreCase("ERROR"));
+		assertTrue("After passing as argument \"-100\", the method should print 'ERROR' to the output", outContent.toString().toLowerCase().contains("error"));
 	}
 	
 	@Test
@@ -85,12 +85,12 @@ public class ATMTest {
 	@Test
 	public void method_withdrawMoney_lessThen0() {
 		instance.withdrawMoney(-100);
-		assertTrue("After passing as argument \"-100\", the method should print 'ERROR' to the output", outContent.toString().trim().equalsIgnoreCase("ERROR"));
+		assertTrue("After passing as argument \"-100\", the method should print 'ERROR' to the output", outContent.toString().toLowerCase().contains("error"));
 	}
 	
 	@Test
 	public void method_withdrawMoney_notEnoughMoney() {
 		instance.withdrawMoney(100000);
-		assertTrue("After passing as argument \"100000\", and there is not that much money on the ballance, the method should print 'NOT ENOUGH MONEY FOR WITHDRAWL' to the output", outContent.toString().trim().equalsIgnoreCase("NOT ENOUGH MONEY FOR WITHDRAWL"));
+		assertTrue("After passing as argument \"100000\", and there is not that much money on the ballance, the method should print 'NOT ENOUGH MONEY FOR WITHDRAWL' to the output", outContent.toString().toLowerCase().contains("not enough money for withdrawal"));
 	}
 }

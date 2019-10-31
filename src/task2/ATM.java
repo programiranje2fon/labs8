@@ -19,7 +19,7 @@ public class ATM implements ATMInterface {
 			if (balance >= amount) {
 				balance = balance - amount;
 			} else {
-				System.out.println("NOT ENOUGH MONEY FOR WITHDRAWL");
+				System.out.println("NOT ENOUGH MONEY FOR WITHDRAWAL");
 			}
 		}
 	}

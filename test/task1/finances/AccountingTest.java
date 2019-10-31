@@ -99,7 +99,7 @@ public class AccountingTest {
 		instance.setBalance(1000);
 		instance.paySalaries(new Employee[]{pr1, pr2, k1}, 160);
 		
-		assertTrue("When an array with three instances is passed (FactoryWorker hourlyRate=100, FactoryWorker hourlyRate=150, and Commercialist hourlyRate=200) and workingHours=160, when the balance=100000, the method paySalaries() should print to the console NOT ENOUGH MONEY FOR SALARIES", outContent.toString().trim().equalsIgnoreCase("NOT ENOUGH MONEY FOR SALARIES"));
+		assertTrue("When an array with three instances is passed (FactoryWorker hourlyRate=100, FactoryWorker hourlyRate=150, and Commercialist hourlyRate=200) and workingHours=160, when the balance=100000, the method paySalaries() should print to the console NOT ENOUGH MONEY FOR SALARIES", outContent.toString().toLowerCase().contains("not enough money for salaries"));
 	}
 
 }
