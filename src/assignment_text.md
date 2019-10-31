@@ -39,7 +39,7 @@ In the same package (**task2**), create public class **ATM** that implements the
 
 1. Private attribute **balance** that represents the current amount of money in the ATM machine; the initial balance is 5000.0 RSD
 2. Implementation of the **depositMoney** method; this method deposits money in the ATM, that is, adds the input amount to the current balance; this is done only if the input amount is greater than zero; otherwise, the method prints an error message ("ERROR") to the screen.
-3. Implementation of the **withdrawMoney** method; this method withdraws money from the ATM, that is, subtracts the given amount from the current balance; this is done only if the given amount is greater than zero and if there is enough money in the ATM machine; otherwise, the method prints an error message to the screen ("ERROR" and "NOT ENOUGH MONEY FOR WITHDRAWL", respectively).
+3. Implementation of the **withdrawMoney** method; this method withdraws money from the ATM, that is, subtracts the given amount from the current balance; this is done only if the given amount is greater than zero and if there is enough money in the ATM machine; otherwise, the method prints an error message to the screen ("ERROR" and "NOT ENOUGH MONEY FOR WITHDRAWAL", respectively).
 4. Public method **printBalance** that prints the current amount of money in the ATM machine as follows: "Current ATM balance: ### RSD".
 
 Create the **TestATM** class in the **task2** package. In the main method of this class, create an object of the **ATM** class, but represent it with a variable of the **ATMInterface** type; call the methods of this object. Next, create one variable of the **ATM** type and assign to it the previously created ATM object; call the same methods but through this new variable. 
